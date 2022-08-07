@@ -1,0 +1,35 @@
+{% extends 'sitemanager/header.html' %}
+
+  {% block content %}
+
+  <div class="container" style="margin-top: 10%;margin-left: auto;margin-right: auto;">
+    <div class="col-md-12">
+      {% if user.is_authenticated %}
+  
+      {% if user.is_superuser %}
+            <h1>Hoşgeldin {{user.username}}</h1>      
+            <p>
+              Tüm kullanıcıların verilerini görme yetkisine sahipsiniz.
+              İstediğiniz gibi kullanıcı ekleme ,kullanıcı silme ve kullanıcı bilgilerini değiştirme yapabilirsiniz.
+              Sisteme girilmiş tüm dökümanların içeriğini görebilir ve arama yapabilirsiniz. 
+            </p>
+      {%else%}
+      <h1>Hoşgeldin {{user.username}}</h1>      
+      <p>
+        PDF yükeleme yetkisine sahipsiniz.
+        Şuana kadar yüklediğiniz tüm pdf verilerini görebilirsiniz.
+      </p>
+      {%endif%}
+    
+      {%else%}
+      <p>
+        Eğer şuana kadar kullanı oluşturmadıysanız "Kullanıcı Kayıt" bölmesinden gerçekleştirebilirsiniz.
+        "Kullanıcı Giriş" kısmında sisteme giriş yapabilirsiniz.
+      </p>
+      {%endif%}
+        
+    </div>
+</div>
+
+  
+  {% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+  <body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e4f0f8;">
+  <a class="navbar-brand" href="/">PDF Site</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="False" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      {% if user.is_authenticated %}
+      {% if user.is_superuser %}
+      <li class="nav-item">
+        <a class="btn btn-outline-secondary my-2 my-sm-0" href="/register">Yeni Kullanıcı Oluştur</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-outline-info my-2 my-sm-0" href="/users">Kullanıcıları Göster</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-outline-info my-2 my-sm-0" href="/show_data">Verileri Göster</a>
+      </li>
+      {%else%}
+      <li class="nav-item">
+        <a class="btn btn-outline-info my-2 my-sm-0" href="/add_pdf">PDF Yükle</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-outline-info my-2 my-sm-0" href="/show_data">Yüklenen Veriler</a>
+      </li>
+      {%endif%}
+      
+      <li class="nav-item">
+        <a class="btn btn-outline-secondary my-2 my-sm-0" href="/logout">Çıkış Yap</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="btn btn-outline-secondary my-2 my-sm-0" href="/">Hoşgeldin, {{user.username}}</a>
+      </li>
+      
+      {% else %}
+
+      <li class="nav-item">
+        <a class="btn btn-outline-info my-2 my-sm-0" href="/login">Kullanıcı Girişi</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-outline-info my-2 my-sm-0"  href="/register">Kullanıcı Kayıt</a>
+      </li>
+
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- Optional Javascript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

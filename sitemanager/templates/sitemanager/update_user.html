@@ -1,0 +1,17 @@
+{% extends "sitemanager/header.html" %}
+
+{% block content %} 
+
+{% load crispy_forms_tags %}         
+
+<!--Register--> 
+<div class="container py-5">
+	<h1>Kullanıcı Güncelleme</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ update_form|crispy }}                    
+		<button class="btn btn-primary" type="submit">Güncelle</button>
+	</form>
+</div>
+
+{% endblock %}

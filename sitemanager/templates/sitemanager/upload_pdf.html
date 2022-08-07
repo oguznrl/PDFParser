@@ -1,0 +1,17 @@
+{% extends "sitemanager/header.html" %}
+
+{% block content %} 
+
+{% load crispy_forms_tags %}         
+
+<!--Register--> 
+<div class="container py-5">
+	<h1>PDF Ekle</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ upload_form|crispy }}                    
+		<button class="btn btn-primary" type="submit">PDF Yükle</button>
+	</form>
+</div>
+
+{% endblock %}
